@@ -1,11 +1,11 @@
 <template>
-    <b-button :to=link :variant=variant :type=type class="border" :block="block" >
+    <b-button :to=link :variant=variant :type=type class="border" :block="block" @click="buttonClick" >
         {{name}}
     </b-button>
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
+    import {Component, Prop, Emit, Vue} from "vue-property-decorator";
 
     @Component
 
@@ -16,6 +16,7 @@
         @Prop() private type !: 'button' | 'submit' | 'reset';
         @Prop() private block !: boolean;
 
+        @Emit() buttonClick(){}
     }
 
 </script>

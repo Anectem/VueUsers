@@ -4,7 +4,7 @@
             :label=label
             :label-for=inputId
     >
-        <b-form-input @input="emitData"
+        <b-form-input @input="groupInput"
                       :id=inputId
                       v-model=inputValue
                       :type=type
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
+    import {Component, Emit, Prop, Vue} from "vue-property-decorator";
 
     @Component({})
 
@@ -30,10 +30,10 @@
         @Prop() public param!: string;
         @Prop() public disabled!: boolean;
 
-        inputValue = '';
+        inputValue = this.value || null;
 
-        emitData() {
-            this.$emit('input', [this.param, this.inputValue])
+        @Emit() groupInput() {
+            return [this.param, this.inputValue]
         }
     }
 </script>

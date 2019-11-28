@@ -5,16 +5,19 @@
         </template>
         <template v-slot:cell(edit)="data">
             <b-button-group vertical>
-                <user-button link="/user" name="Просмотреть" variant="success" type="button"></user-button>
-                <user-button link="/editUser" name="Изменить" variant="info" type="button"></user-button>
-                <user-button name="Удалить" variant="danger" type="button"></user-button>
+                <user-button name="Просмотреть" variant="success" type="button"
+                             @button-click="detailsUser(data.item.id,'/user')"></user-button>
+                <user-button name="Изменить" variant="info" type="button"
+                             @button-click="detailsUser(data.item.id,'/editUser')"></user-button>
+                <user-button name="Удалить" variant="danger" type="button"
+                             @button-click="deleteUser(data.item.id)"></user-button>
             </b-button-group>
         </template>
     </b-table>
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
+    import {Component, Emit, Prop, Vue} from "vue-property-decorator";
     import {IUser} from "@/types";
     import UserButton from "@/components/UserButton.vue";
 
@@ -23,16 +26,19 @@
     })
 
     export default class UserTable extends Vue {
-        @Prop() private users!: IUser [];
-
         fields = [
             'id',
             {key: 'name', label: 'Имя'},
             'email',
             {key: 'edit', label: 'Редактирование'}
         ];
+        @Prop() private users!: IUser [];
+
+        @Emit() deleteUser (id: string) {};
+
+        @Emit() detailsUser  (id: string, route: string) {}
+
     }
 </script>
 <style scoped lang="scss">
 </style>
-

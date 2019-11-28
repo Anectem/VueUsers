@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import UserTableHome from "../views/UserTableHome.vue";
 
 Vue.use(VueRouter);
 
@@ -8,25 +8,25 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: Home
+    component: UserTableHome
   },
   {
     path: "/addUser",
     name: "addUser",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AddUser.vue")
+      import( "../views/AddUser.vue")
   },
   {
     path: "/user",
     name: "userDetails",
     component: () =>
-        import(/* webpackChunkName: "about" */ "../views/UserDetails.vue")
+        import( "../views/UserDetails.vue")
   },
   {
     path: "/editUser",
     name: "editUser",
     component: () =>
-        import(/* webpackChunkName: "about" */ "../views/EditUser.vue")
+        import( "../views/EditUser.vue")
   }
 ];
 

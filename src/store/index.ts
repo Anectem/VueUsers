@@ -1,20 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex"
-import {IUser} from "@/types";
+import users from "@/store/modules/users";
+import oneUser from "@/store/modules/oneUser";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    users: [] as IUser[],
-    user: {} as IUser
   },
-  getters:{
+  getters:{},
+  mutations: {
+  },
 
-  },
-  mutations: {},
   actions: {
-    GET_DATA: async (context,payload)
   },
+  modules: {
+    users,
+    oneUser
+  }
 
 });
